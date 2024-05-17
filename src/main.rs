@@ -1,6 +1,7 @@
 use clap::{Parser, Subcommand};
 use colored::Colorize;
 // use reqwest::blocking::Client;
+use std::fs;
 use std::io::{self, BufRead, IsTerminal};
 
 #[derive(Debug, Subcommand)]
@@ -46,19 +47,24 @@ fn piped_input() -> String {
     return prefix;
 }
 
+fn list_prompts(){
+    let paths = fs::read_dir("./src/prompts").unwrap();
+            for path in paths {
+                let file_path = path.unwrap().path();
+                
+                println!("Prompt File Path: {}", file_path.display())
+            }
+}
+
 fn main() {
     let args: Cli = Cli::parse();
     // let client = Client::new();
     let prompt = &args.prompt.join(" ");
     let piped = piped_input();
 
-    println!("{} {} !", "it".green(), "works".blue().bold());
-
-    // You can check for the existence of subcommands, and if found use their
-    // matches just as you would the top level cmd
     match &args.command {
         Some(Commands::List) => {
-            println!("'List option")
+            list_prompts();
         }
         None => {
             println!("---------");
