@@ -21,3 +21,5 @@ cargo install --path .
 ## Ref
 - https://www.shuttle.rs/blog/2023/12/08/clap-rust
 - https://www.rustadventure.dev/building-a-digital-garden-cli/clap-v4/implementing-subcommands-with-clap#:~:text=The%20we%20use%20the%20command,as%20the%20flags%20they%20take.
+
+- https://github.com/ad-si/cai/blob/main/tests/integration_tests.rs
