@@ -13,24 +13,36 @@ struct Cli {
     force: bool,
 }
 
-fn main() {
-    // let cli = Cli::parse();
-    // // let client = Client::new();
-    // let prompt = &cli.prompt.join(" ");
-    // println!("{}", prompt);
-
-    // let args: Vec<String> = std::env::args().collect();
-    // println!("{:?}", args);
-
+fn piped_input() -> String {
     let piped = io::stdin().lock();
+    let mut prefix = String::new();
 
     if piped.is_terminal() {
         eprintln!("No input provided. Please pipe text or specify a file.");
     } else {
         for line in piped.lines() {
-            let line = line.expect("Failed to read line from stdin");
-            // Process the line of text
-            println!("Line: {}", line);
+            match line {
+                Ok(line) => {
+                    // Add each line to the collected_input
+                    prefix.push_str(&line);
+                    prefix.push('\n'); // Preserve newline character
+                }
+                Err(err) => {
+                    eprintln!("Error reading line: {}", err);
+                }
+            }
         }
     }
+    return prefix;
+}
+
+fn main() {
+    let cli = Cli::parse();
+    // let client = Client::new();
+    let prompt = &cli.prompt.join(" ");
+    println!("{}", prompt);
+    let piped = piped_input();
+    print!("{}", piped)
+    // let args: Vec<String> = std::env::args().collect();
+    // println!("{:?}", args);
 }
