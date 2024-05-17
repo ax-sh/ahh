@@ -57,7 +57,7 @@ fn list_prompts() {
 fn execute_prompt(prompt: &str, piped: &str) {
     let ollama = Ollama::default();
     let model = "llama3:latest";
-    println!("Ollama debug");
+    println!("{}", "Ollama debug".green());
     dbg!(ollama);
     println!("---------");
     println!("{}: {}", "[PIPED] ".green(), piped.green());
