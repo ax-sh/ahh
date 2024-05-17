@@ -46,14 +46,14 @@ fn piped_input() -> String {
 }
 
 fn main() {
-    let cli = Cli::parse();
+    let args: Cli = Cli::parse();
     // let client = Client::new();
-    let prompt = &cli.prompt.join(" ");
+    let prompt = &args.prompt.join(" ");
     let piped = piped_input();
 
     // You can check for the existence of subcommands, and if found use their
     // matches just as you would the top level cmd
-    match &cli.command {
+    match &args.command {
         Some(Commands::List) => {
             println!("'List option")
         }
@@ -62,6 +62,7 @@ fn main() {
             println!("prompt: {}", prompt);
         }
     }
+    dbg!(args);
     // let args: Vec<String> = std::env::args().collect();
     // println!("{:?}", args);
 }
