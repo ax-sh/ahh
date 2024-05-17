@@ -1,5 +1,7 @@
 use clap::{Parser, Subcommand};
 use colored::Colorize;
+use ollama_rs::Ollama;
+use std::borrow::Borrow;
 // use reqwest::blocking::Client;
 use std::fs;
 use std::io::{self, BufRead, IsTerminal};
@@ -54,6 +56,22 @@ fn list_prompts() {
         println!("Prompt File Path: {}", file_path.display())
     }
 }
+fn execute_prompt(prompt:&str, piped:&str){
+    // let ollama = Ollama::default();
+    println!("---------");
+    println!("{}: {}", "[PIPED] ".green(), piped.green());
+    println!("{}: {}", "[PROMPT]".green(), prompt.green());
+    println!("---------");
+
+    // let model = "llama3:latest".to_string();
+    // let prompt = "Why is the sky blue?".to_string();
+
+    // let res = ollama.generate(GenerationRequest::new(model, prompt)).await;
+
+    // if let Ok(res) = res {
+    //     println!("{}", res.response);
+    // }
+}
 
 fn main() {
     let args: Cli = Cli::parse();
@@ -66,10 +84,7 @@ fn main() {
             list_prompts();
         }
         None => {
-            println!("---------");
-            print!("{}: {}", "[PIPED] ".green(), piped.green());
-            print!("{}: {}", "[PROMPT]".green(), prompt.green());
-            println!("---------");
+          execute_prompt(&prompt, &piped)
         }
     }
     // dbg!(args);
