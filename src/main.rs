@@ -18,7 +18,7 @@ fn piped_input() -> String {
     let mut prefix = String::new();
 
     if piped.is_terminal() {
-        eprintln!("No input provided. Please pipe text or specify a file.");
+        // eprintln!("No input provided. Please pipe text or specify a file.");
     } else {
         for line in piped.lines() {
             match line {
@@ -39,9 +39,9 @@ fn main() {
     let cli = Cli::parse();
     // let client = Client::new();
     let prompt = &cli.prompt.join(" ");
-    println!("{}", prompt);
     let piped = piped_input();
-    print!("{}",piped)
+    print!("piped: {}",piped);
+    println!("prompt: {}", prompt);
     // let args: Vec<String> = std::env::args().collect();
     // println!("{:?}", args);
 }
