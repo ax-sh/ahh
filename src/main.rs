@@ -4,6 +4,10 @@ use ollama_rs::Ollama;
 use std::fs;
 use std::io::{self, BufRead, IsTerminal};
 
+use spinoff::{spinners, Color, Spinner};
+use std::thread::sleep;
+use std::time::Duration;
+
 #[derive(Debug, Subcommand)]
 enum Commands {
     /// Lists available options
@@ -28,6 +32,10 @@ struct Cli {
 fn piped_input() -> String {
     let piped = io::stdin().lock();
     let mut prefix = String::new();
+
+    let mut spinner = Spinner::new(spinners::Dots, "Loading...", Color::Blue);
+    sleep(Duration::from_secs(3));
+    spinner.success("Done!");
 
     if piped.is_terminal() {
         // eprintln!("No input provided. Please pipe text or specify a file.");
