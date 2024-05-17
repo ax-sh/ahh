@@ -47,13 +47,12 @@ fn piped_input() -> String {
     return prefix;
 }
 
-fn list_prompts(){
+fn list_prompts() {
     let paths = fs::read_dir("./src/prompts").unwrap();
-            for path in paths {
-                let file_path = path.unwrap().path();
-                
-                println!("Prompt File Path: {}", file_path.display())
-            }
+    for path in paths {
+        let file_path = path.unwrap().path();
+        println!("Prompt File Path: {}", file_path.display())
+    }
 }
 
 fn main() {
