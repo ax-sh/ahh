@@ -1,7 +1,6 @@
 use clap::{Parser, Subcommand};
 use colored::Colorize;
 use ollama_rs::Ollama;
-// use reqwest::blocking::Client;
 use std::fs;
 use std::io::{self, BufRead, IsTerminal};
 
@@ -56,16 +55,18 @@ fn list_prompts() {
     }
 }
 fn execute_prompt(prompt: &str, piped: &str) {
-    // let ollama = Ollama::default();
+    let ollama = Ollama::default();
+    let model = "llama3:latest";
+    println!("Ollama debug");
+    dbg!(ollama);
     println!("---------");
     println!("{}: {}", "[PIPED] ".green(), piped.green());
     println!("{}: {}", "[PROMPT]".green(), prompt.green());
     println!("---------");
 
-    // let model = "llama3:latest".to_string();
-    // let prompt = "Why is the sky blue?".to_string();
+    print!("{}", model)
 
-    // let res = ollama.generate(GenerationRequest::new(model, prompt)).await;
+    // let res = ollama.generate(GenerationRequest::new(model, prompt.borrow()))
 
     // if let Ok(res) = res {
     //     println!("{}", res.response);
