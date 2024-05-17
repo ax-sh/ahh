@@ -1,6 +1,13 @@
-use clap::Parser;
+use clap::{Parser, Subcommand};
 // use reqwest::blocking::Client;
 use std::io::{self, BufRead, IsTerminal};
+
+#[derive(Debug, Subcommand)]
+enum Commands {
+    /// Lists available options
+    #[clap(alias = "ls")]
+    List,
+}
 
 #[derive(Parser, Debug)]
 #[command(author, version, about, long_about = None)]
@@ -11,6 +18,9 @@ struct Cli {
     /// Run the generated program without asking for confirmation
     #[clap(short = 'y', long)]
     force: bool,
+
+    #[command(subcommand)]
+    command: Option<Commands>,
 }
 
 fn piped_input() -> String {
@@ -23,7 +33,7 @@ fn piped_input() -> String {
         for line in piped.lines() {
             match line {
                 Ok(line) => {
-                    prefix.push_str(&line);// Add each line to the collected_input
+                    prefix.push_str(&line); // Add each line to the collected_input
                     prefix.push('\n'); // Preserve newline character
                 }
                 Err(err) => {
@@ -40,8 +50,18 @@ fn main() {
     // let client = Client::new();
     let prompt = &cli.prompt.join(" ");
     let piped = piped_input();
-    print!("piped: {}",piped);
-    println!("prompt: {}", prompt);
+
+    // You can check for the existence of subcommands, and if found use their
+    // matches just as you would the top level cmd
+    match &cli.command {
+        Some(Commands::List) => {
+            println!("'List option")
+        }
+        None => {
+            print!("piped: {}", piped);
+            println!("prompt: {}", prompt);
+        }
+    }
     // let args: Vec<String> = std::env::args().collect();
     // println!("{:?}", args);
 }
