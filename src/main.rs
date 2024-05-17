@@ -23,8 +23,7 @@ fn piped_input() -> String {
         for line in piped.lines() {
             match line {
                 Ok(line) => {
-                    // Add each line to the collected_input
-                    prefix.push_str(&line);
+                    prefix.push_str(&line);// Add each line to the collected_input
                     prefix.push('\n'); // Preserve newline character
                 }
                 Err(err) => {
@@ -42,7 +41,7 @@ fn main() {
     let prompt = &cli.prompt.join(" ");
     println!("{}", prompt);
     let piped = piped_input();
-    print!("{}", piped)
+    print!("{}",piped)
     // let args: Vec<String> = std::env::args().collect();
     // println!("{:?}", args);
 }
