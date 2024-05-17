@@ -1,4 +1,5 @@
 use clap::{Parser, Subcommand};
+use colored::Colorize;
 // use reqwest::blocking::Client;
 use std::io::{self, BufRead, IsTerminal};
 
@@ -50,6 +51,8 @@ fn main() {
     // let client = Client::new();
     let prompt = &args.prompt.join(" ");
     let piped = piped_input();
+
+    println!("{} {} !", "it".green(), "works".blue().bold());
 
     // You can check for the existence of subcommands, and if found use their
     // matches just as you would the top level cmd
