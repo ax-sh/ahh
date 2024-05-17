@@ -61,8 +61,10 @@ fn main() {
             println!("'List option")
         }
         None => {
-            print!("piped: {}", piped);
-            println!("prompt: {}", prompt);
+            println!("---------");
+            print!("{}: {}", "[PIPED] ".green(), piped.green());
+            print!("{}: {}", "[PROMPT]".green(), prompt.green());
+            println!("---------");
         }
     }
     // dbg!(args);
