@@ -62,7 +62,7 @@ fn main() {
             println!("prompt: {}", prompt);
         }
     }
-    dbg!(args);
+    // dbg!(args);
     // let args: Vec<String> = std::env::args().collect();
     // println!("{:?}", args);
 }
