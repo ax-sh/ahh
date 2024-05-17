@@ -1,7 +1,6 @@
 use clap::{Parser, Subcommand};
 use colored::Colorize;
-use ollama_rs::Ollama;
-use std::borrow::Borrow;
+use ollama_rs::Ollama
 // use reqwest::blocking::Client;
 use std::fs;
 use std::io::{self, BufRead, IsTerminal};
