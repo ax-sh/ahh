@@ -59,7 +59,8 @@ fn list_prompts() {
     }
 }
 async fn execute_prompt(prompt: &str, piped: &str) {
-    let mut spinner = Spinner::new(spinners::Dots, "Loading...", Color::Blue);
+    println!("");
+    let mut spinner = Spinner::new(spinners::Dots, "Loading...", Color::Yellow);
 
     let ollama = Ollama::default();
     let model = "llama3:latest".to_string();
@@ -72,7 +73,10 @@ async fn execute_prompt(prompt: &str, piped: &str) {
 
     if let Ok(res) = res {
         let md = res.response;
-        spinner.stop_and_persist("✔".green().to_string().as_str(), "Got some Answers!");
+        spinner.stop_and_persist(
+            " ✔ ".green().to_string().as_str(),
+            "Got some Answers!".green().to_string().as_str(),
+        );
 
         PrettyPrinter::new()
             .input_from_bytes(md.as_bytes())
@@ -103,9 +107,7 @@ async fn main() {
     }
 
     match &args.command {
-        Some(Commands::List) => {
-            list_prompts();
-        }
+        Some(Commands::List) => list_prompts(),
         None => execute_prompt(&prompt, &piped).await,
     }
 }
