@@ -2,6 +2,7 @@ use clap::{Parser, Subcommand};
 use colored::Colorize;
 use ollama_rs::generation::completion::request::GenerationRequest;
 use ollama_rs::Ollama;
+use rust_embed::Embed;
 use std::io::{self, BufRead, IsTerminal};
 
 use std::{env, fs, process};
@@ -9,9 +10,8 @@ use std::{env, fs, process};
 use bat::PrettyPrinter;
 use spinoff::{spinners, Color, Spinner};
 
-
 #[derive(Embed)]
-#[folder = "examples/public/"]
+#[folder = "src/prompts/"]
 struct Asset;
 
 #[derive(Debug, Subcommand)]
@@ -68,20 +68,9 @@ fn list_prompts() {
 }
 
 fn get_default_prompt() -> String {
-    // TODO temp hard code as the alternative doesnt work in diff dir
-    return String::from("
-**Instructions**
-- Your answer should be on point without fluff
-- Answers should be shorter
-
-Input:
-"
-    );
-    // let current_dir = env::current_dir().unwrap();
-    // // note doesnt work if using from diff dirs
-    // let file_path = current_dir.join("./src/prompts/default_prompt.md");
-    // let contents = fs::read_to_string(file_path).expect("Should have been able to read the file");
-    // return contents;
+    let md = Asset::get("default_prompt.md").unwrap();
+    let default_prompt = std::str::from_utf8(md.data.as_ref()).unwrap();
+    return default_prompt.to_string();
 }
 
 async fn execute_prompt(prompt: &str, piped: &str, model: &str) {
@@ -94,6 +83,9 @@ async fn execute_prompt(prompt: &str, piped: &str, model: &str) {
     } else {
         piped.to_string()
     };
+
+    println!("[[inst]] {}", instructions);
+    println!();
 
     let prompt_with_instructions = [&instructions, prompt].join("\n");
 
@@ -148,17 +140,16 @@ async fn main() {
 
 #[cfg(test)]
 mod tests {
-    use std::env;
 
     use assert_cmd::Command;
     use predicates::prelude::*;
 
+    use crate::Asset;
+
     #[test]
     fn test_external_prompts() {
-        println!(
-            "The current directory is: {}",
-            env::var("CARGO_MANIFEST_DIR")
-        );
+        let md = Asset::get("default_prompt.md").unwrap();
+        println!("66666 {:?}", std::str::from_utf8(md.data.as_ref()));
     }
     #[test]
     fn test_default_ahh_execution() {
