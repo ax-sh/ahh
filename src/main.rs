@@ -74,6 +74,10 @@ fn get_default_prompt() -> String {
 }
 
 async fn execute_prompt(prompt: &str, piped: &str, model: &str) {
+    if prompt.trim().is_empty() {
+        eprintln!("{}", "No Prompt provided. Exiting".red());
+        process::exit(0);
+    }
     println!("");
     let mut spinner = Spinner::new(spinners::Dots, " Loading... ", Color::Yellow);
 
@@ -117,10 +121,7 @@ async fn main() {
     let prompt = &args.prompt.join(" ");
     let piped = piped_input();
     let model = "llama3:latest";
-    if prompt.trim().is_empty() {
-        eprintln!("{}", "No Prompt provided. Exiting".red());
-        process::exit(0);
-    }
+    
 
     if args.debug {
         // dbg!(ollama);
