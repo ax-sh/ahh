@@ -144,7 +144,10 @@ async fn main() {
 
 #[cfg(test)]
 mod tests {
+    use std::collections::HashMap;
+
     use assert_cmd::Command;
+    use config::Config;
     use directories::ProjectDirs;
     use predicates::prelude::*;
 
@@ -165,6 +168,25 @@ mod tests {
     fn test_external_prompts() {
         let default_prompt = get_default_prompt();
         println!("{}", default_prompt)
+    }
+
+    #[test]
+    fn test_config() {
+        let settings = Config::builder()
+            // Add in `./Settings.toml`
+            .add_source(config::File::with_name("./src/Settings"))
+            // Add in settings from the environment (with a prefix of APP)
+            // Eg.. `APP_DEBUG=1 ./target/app` would set the `debug` key
+            .add_source(config::Environment::with_prefix("APP"))
+            .build()
+            .unwrap();
+        let pref = settings
+            .try_deserialize::<HashMap<String, String>>()
+            .unwrap();
+        let priority: &String = pref.get("priority").unwrap();
+        print!("[[PRIORITY]] {}", priority);
+        // Print out our settings (as a HashMap)
+        eprintln!("{:?}", pref);
     }
     #[test]
     fn test_default_ahh_execution() {
