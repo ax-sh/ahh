@@ -2,6 +2,7 @@
 name = "ahh"
 version = "0.1.0"
 edition = "2021"
+include = ["src/prompts/*"]
 
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
 
@@ -17,3 +18,5 @@ tokio = { version = "1", features = ["macros", "rt-multi-thread"] }
 bat = "0.24.0"
 predicates = "3.1.0"
 assert_cmd = "2.0.14"
+
+# cargo install --path .
