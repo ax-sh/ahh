@@ -68,7 +68,7 @@ fn get_default_prompt() -> String {
 
 async fn execute_prompt(prompt: &str, piped: &str, model: &str) {
     println!("");
-    let mut spinner = Spinner::new(spinners::Dots, "Loading...", Color::Yellow);
+    let mut spinner = Spinner::new(spinners::Dots, " Loading... ", Color::Yellow);
 
     let ollama = Ollama::default();
     let instructions = if piped.is_empty() {
@@ -77,7 +77,7 @@ async fn execute_prompt(prompt: &str, piped: &str, model: &str) {
         piped.to_string()
     };
 
-    let prompt_with_instructions = [piped, prompt].join("\n");
+    let prompt_with_instructions = [&instructions, prompt].join("\n");
 
     let res = ollama
         .generate(GenerationRequest::new(
