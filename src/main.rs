@@ -3,6 +3,7 @@ use colored::Colorize;
 use ollama_rs::generation::completion::request::GenerationRequest;
 use ollama_rs::Ollama;
 use std::io::{self, BufRead, IsTerminal};
+use std::path::Path;
 use std::{fs, process};
 
 use bat::PrettyPrinter;
@@ -58,11 +59,23 @@ fn list_prompts() {
         println!("Prompt File Path: {}", file_path.display())
     }
 }
+
+fn get_default_prompt() -> String {
+    let file_path = Path::new("./src/prompts/default_prompt.md");
+    let contents = fs::read_to_string(file_path).expect("Should have been able to read the file");
+    return contents;
+}
+
 async fn execute_prompt(prompt: &str, piped: &str, model: &str) {
     println!("");
     let mut spinner = Spinner::new(spinners::Dots, "Loading...", Color::Yellow);
 
     let ollama = Ollama::default();
+    let instructions = if piped.is_empty() {
+        get_default_prompt()
+    } else {
+        piped.to_string()
+    };
 
     let prompt_with_instructions = [piped, prompt].join("\n");
 
