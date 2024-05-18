@@ -64,17 +64,16 @@ fn list_prompts() {
 
 fn get_default_prompt() -> String {
     // TODO temp hard code as the alternative doesnt work in diff dir
-    return String.from(
-        "
+    return String::from("
 **Instructions**
 - Your answer should be on point without fluff
 - Answers should be shorter
 
 Input:
-",
+"
     );
     // let current_dir = env::current_dir().unwrap();
-    // // note doesnt work if using from diff dir
+    // // note doesnt work if using from diff dirs
     // let file_path = current_dir.join("./src/prompts/default_prompt.md");
     // let contents = fs::read_to_string(file_path).expect("Should have been able to read the file");
     // return contents;
