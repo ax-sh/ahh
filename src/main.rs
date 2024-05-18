@@ -5,8 +5,8 @@ use ollama_rs::Ollama;
 use std::fs;
 use std::io::{self, BufRead, IsTerminal};
 
+use bat::PrettyPrinter;
 use spinoff::{spinners, Color, Spinner};
-
 
 #[derive(Debug, Subcommand)]
 enum Commands {
@@ -21,9 +21,9 @@ struct Cli {
     /// Description of the command to execute
     prompt: Vec<String>,
 
-    /// Run the generated program without asking for confirmation
-    #[clap(short = 'y', long)]
-    force: bool,
+    /// Run the generated program with debug
+    #[clap(short = 'd', long)]
+    debug: bool,
 
     #[command(subcommand)]
     command: Option<Commands>,
@@ -60,7 +60,6 @@ fn list_prompts() {
 }
 async fn execute_prompt(prompt: &str, piped: &str) {
     let mut spinner = Spinner::new(spinners::Dots, "Loading...", Color::Blue);
-    // sleep(Duration::from_secs(3));
 
     let ollama = Ollama::default();
     let model = "llama3:latest".to_string();
@@ -69,23 +68,18 @@ async fn execute_prompt(prompt: &str, piped: &str) {
     let prompt_with_instructions = [piped, prompt].join("\n");
 
     let res = ollama
-        .generate(GenerationRequest::new(model, prompt.to_string()))
+        .generate(GenerationRequest::new(model, prompt_with_instructions))
         .await;
 
-    println!("---------");
-    println!("{}: {}", "[PIPED] ".green(), piped.green());
-    println!("{}: {}", "[PROMPT]".green(), prompt.green());
-    println!("{}: {}", "[PROMPT With instruct]".green(), prompt_with_instructions.green());
-    println!("---------");
-    println!("");
-   
-
     if let Ok(res) = res {
-        spinner.stop_and_persist(
-            "✔".green().to_string().as_str(),
-            "Got some Answers!",
-        );
-        println!("{}", res.response.green());
+        let md = res.response;
+        spinner.stop_and_persist("✔".green().to_string().as_str(), "Got some Answers!");
+
+        PrettyPrinter::new()
+            .input_from_bytes(md.as_bytes())
+            .language("md")
+            .print()
+            .unwrap();
     }
 }
 
@@ -94,6 +88,15 @@ async fn main() {
     let args: Cli = Cli::parse();
     let prompt = &args.prompt.join(" ");
     let piped = piped_input();
+
+    if args.debug {
+        println!("---------");
+        println!("{}: {}", "[PIPED] ".green(), piped.green());
+        println!("{}: {}", "[PROMPT]".green(), prompt.green());
+
+        println!("---------");
+        println!("");
+    }
 
     match &args.command {
         Some(Commands::List) => {

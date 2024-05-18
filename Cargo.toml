@@ -14,3 +14,4 @@ ollama-rs = "0.1.9"
 spinoff = "0.8.0"
 directories = "5.0"
 tokio = { version = "1", features = ["macros", "rt-multi-thread"] }
+bat = "0.24.0"
