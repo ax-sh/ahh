@@ -31,6 +31,10 @@ struct Cli {
     #[clap(short = 'd', long)]
     debug: bool,
 
+    /// Change the ollama model as needed
+    #[clap(short = 'm', default_value = "llama3:latest")]
+    model: String,
+
     #[command(subcommand)]
     command: Option<Commands>,
 }
