@@ -11,9 +11,8 @@ echo "using piped data" | cargo run -- this is a test
 
 ```
 
-```sh
-
 # to install
+```sh
 git clone https://github.com/ax-sh/ahh.git
 cargo install --path .
 
