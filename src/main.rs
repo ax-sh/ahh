@@ -34,10 +34,6 @@ fn piped_input() -> String {
     let piped = io::stdin().lock();
     let mut prefix = String::new();
 
-    let mut spinner = Spinner::new(spinners::Dots, "Loading...", Color::Blue);
-    sleep(Duration::from_secs(3));
-    spinner.success("Done!");
-
     if piped.is_terminal() {
         // eprintln!("No input provided. Please pipe text or specify a file.");
     } else {
@@ -64,6 +60,9 @@ fn list_prompts() {
     }
 }
 async fn execute_prompt(prompt: &str, piped: &str) {
+    let mut spinner = Spinner::new(spinners::Dots, "Loading...", Color::Blue);
+    // sleep(Duration::from_secs(3));
+
     let ollama = Ollama::default();
     let model = "llama3:latest".to_string();
     // dbg!(ollama);
@@ -77,6 +76,7 @@ async fn execute_prompt(prompt: &str, piped: &str) {
     println!("{}: {}", "[PROMPT]".green(), prompt.green());
     println!("---------");
     println!("");
+    spinner.success("Done!");
 
     if let Ok(res) = res {
         println!("{}", res.response.green());
