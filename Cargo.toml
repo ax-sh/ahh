@@ -16,6 +16,9 @@ spinoff = "0.8.0"
 directories = "5.0"
 tokio = { version = "1", features = ["macros", "rt-multi-thread"] }
 bat = "0.24.0"
+rust-embed="8.4.0"
+
+# For testing
 predicates = "3.1.0"
 assert_cmd = "2.0.14"
 

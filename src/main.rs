@@ -9,6 +9,11 @@ use std::{env, fs, process};
 use bat::PrettyPrinter;
 use spinoff::{spinners, Color, Spinner};
 
+
+#[derive(Embed)]
+#[folder = "examples/public/"]
+struct Asset;
+
 #[derive(Debug, Subcommand)]
 enum Commands {
     /// Lists available options
