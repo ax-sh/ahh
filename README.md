@@ -4,6 +4,10 @@
 cli tool for using llama3 with custom instruction prompt
 
 # To install
+
+1. First install ollama https://ollama.com/download
+1. ollama run llama3
+ 
 ```sh
 git clone https://github.com/ax-sh/ahh.git
 cargo install --path .
