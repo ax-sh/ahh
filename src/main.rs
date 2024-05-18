@@ -2,8 +2,8 @@ use clap::{Parser, Subcommand};
 use colored::Colorize;
 use ollama_rs::generation::completion::request::GenerationRequest;
 use ollama_rs::Ollama;
-use std::fs;
 use std::io::{self, BufRead, IsTerminal};
+use std::{fs, process};
 
 use bat::PrettyPrinter;
 use spinoff::{spinners, Color, Spinner};
@@ -88,6 +88,10 @@ async fn main() {
     let args: Cli = Cli::parse();
     let prompt = &args.prompt.join(" ");
     let piped = piped_input();
+    if prompt.trim().is_empty() {
+        eprintln!("{}", "No Prompt provided. Exiting".red());
+        process::exit(0);
+    }
 
     if args.debug {
         println!("---------");
