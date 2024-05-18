@@ -93,7 +93,7 @@ async fn main() {
     }
 
     if args.debug {
-         // dbg!(ollama);
+        // dbg!(ollama);
         println!("---------");
         println!("{}: {}", "[PIPED] ".green(), piped.green());
         println!("{}: {}", "[PROMPT]".green(), prompt.green());
