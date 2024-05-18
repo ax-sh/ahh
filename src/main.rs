@@ -3,8 +3,8 @@ use colored::Colorize;
 use ollama_rs::generation::completion::request::GenerationRequest;
 use ollama_rs::Ollama;
 use std::io::{self, BufRead, IsTerminal};
-use std::path::Path;
-use std::{fs, process};
+
+use std::{env, fs, process};
 
 use bat::PrettyPrinter;
 use spinoff::{spinners, Color, Spinner};
@@ -53,7 +53,9 @@ fn piped_input() -> String {
 }
 
 fn list_prompts() {
-    let paths = fs::read_dir("./src/prompts").unwrap();
+    let current_dir = env::current_dir().unwrap();
+
+    let paths = fs::read_dir(current_dir.join("./src/prompts")).unwrap();
     for path in paths {
         let file_path = path.unwrap().path();
         println!("Prompt File Path: {}", file_path.display())
@@ -61,9 +63,21 @@ fn list_prompts() {
 }
 
 fn get_default_prompt() -> String {
-    let file_path = Path::new("./src/prompts/default_prompt.md");
-    let contents = fs::read_to_string(file_path).expect("Should have been able to read the file");
-    return contents;
+    // TODO temp hard code as the alternative doesnt work in diff dir
+    return String.from(
+        "
+**Instructions**
+- Your answer should be on point without fluff
+- Answers should be shorter
+
+Input:
+",
+    );
+    // let current_dir = env::current_dir().unwrap();
+    // // note doesnt work if using from diff dir
+    // let file_path = current_dir.join("./src/prompts/default_prompt.md");
+    // let contents = fs::read_to_string(file_path).expect("Should have been able to read the file");
+    // return contents;
 }
 
 async fn execute_prompt(prompt: &str, piped: &str, model: &str) {
@@ -130,9 +144,18 @@ async fn main() {
 
 #[cfg(test)]
 mod tests {
+    use std::env;
+
     use assert_cmd::Command;
     use predicates::prelude::*;
 
+    #[test]
+    fn test_external_prompts() {
+        println!(
+            "The current directory is: {}",
+            env::var("CARGO_MANIFEST_DIR")
+        );
+    }
     #[test]
     fn test_default_ahh_execution() {
         let mut cmd = Command::cargo_bin("ahh").unwrap();
