@@ -124,7 +124,7 @@ async fn main() {
     let args: Cli = Cli::parse();
     let prompt = &args.prompt.join(" ");
     let piped = piped_input();
-    let model = "llama3:latest";
+    let model = args.model;
 
     if args.debug {
         // dbg!(ollama);
@@ -138,7 +138,7 @@ async fn main() {
 
     match &args.command {
         Some(Commands::List) => list_prompts(),
-        None => execute_prompt(&prompt, &piped, model).await,
+        None => execute_prompt(&prompt, &piped, &model).await,
     }
 }
 
