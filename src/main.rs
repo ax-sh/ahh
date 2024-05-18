@@ -66,7 +66,6 @@ fn list_prompts() {
 async fn execute_prompt(prompt: &str, piped: &str) {
     let ollama = Ollama::default();
     let model = "llama3:latest".to_string();
-    println!("{}", "Ollama debug".green());
     // dbg!(ollama);
 
     let res = ollama
@@ -77,9 +76,10 @@ async fn execute_prompt(prompt: &str, piped: &str) {
     println!("{}: {}", "[PIPED] ".green(), piped.green());
     println!("{}: {}", "[PROMPT]".green(), prompt.green());
     println!("---------");
+    println!("");
 
     if let Ok(res) = res {
-        println!("{}", res.response);
+        println!("{}", res.response.green());
     }
 }
 
