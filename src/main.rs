@@ -58,17 +58,19 @@ fn list_prompts() {
         println!("Prompt File Path: {}", file_path.display())
     }
 }
-async fn execute_prompt(prompt: &str, piped: &str) {
+async fn execute_prompt(prompt: &str, piped: &str, model: &str) {
     println!("");
     let mut spinner = Spinner::new(spinners::Dots, "Loading...", Color::Yellow);
 
     let ollama = Ollama::default();
-    let model = "llama3:latest".to_string();
 
     let prompt_with_instructions = [piped, prompt].join("\n");
 
     let res = ollama
-        .generate(GenerationRequest::new(model, prompt_with_instructions))
+        .generate(GenerationRequest::new(
+            model.to_string(),
+            prompt_with_instructions,
+        ))
         .await;
 
     if let Ok(res) = res {
@@ -91,6 +93,7 @@ async fn main() {
     let args: Cli = Cli::parse();
     let prompt = &args.prompt.join(" ");
     let piped = piped_input();
+    let model = "llama3:latest";
     if prompt.trim().is_empty() {
         eprintln!("{}", "No Prompt provided. Exiting".red());
         process::exit(0);
@@ -108,6 +111,6 @@ async fn main() {
 
     match &args.command {
         Some(Commands::List) => list_prompts(),
-        None => execute_prompt(&prompt, &piped).await,
+        None => execute_prompt(&prompt, &piped, model).await,
     }
 }
