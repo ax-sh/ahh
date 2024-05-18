@@ -1,5 +1,6 @@
 use clap::{Parser, Subcommand};
 use colored::Colorize;
+use ollama_rs::generation::completion::request::GenerationRequest;
 use ollama_rs::Ollama;
 use std::fs;
 use std::io::{self, BufRead, IsTerminal};
@@ -62,26 +63,28 @@ fn list_prompts() {
         println!("Prompt File Path: {}", file_path.display())
     }
 }
-fn execute_prompt(prompt: &str, piped: &str) {
+async fn execute_prompt(prompt: &str, piped: &str) {
     let ollama = Ollama::default();
-    let model = "llama3:latest";
+    let model = "llama3:latest".to_string();
     println!("{}", "Ollama debug".green());
-    dbg!(ollama);
+    // dbg!(ollama);
+
+    let res = ollama
+        .generate(GenerationRequest::new(model, prompt.to_string()))
+        .await;
+
     println!("---------");
     println!("{}: {}", "[PIPED] ".green(), piped.green());
     println!("{}: {}", "[PROMPT]".green(), prompt.green());
     println!("---------");
 
-    print!("{}", model)
-
-    // let res = ollama.generate(GenerationRequest::new(model, prompt.borrow()))
-
-    // if let Ok(res) = res {
-    //     println!("{}", res.response);
-    // }
+    if let Ok(res) = res {
+        println!("{}", res.response);
+    }
 }
 
-fn main() {
+#[tokio::main]
+async fn main() {
     let args: Cli = Cli::parse();
     let prompt = &args.prompt.join(" ");
     let piped = piped_input();
@@ -90,6 +93,6 @@ fn main() {
         Some(Commands::List) => {
             list_prompts();
         }
-        None => execute_prompt(&prompt, &piped),
+        None => execute_prompt(&prompt, &piped).await,
     }
 }
