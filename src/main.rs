@@ -121,7 +121,6 @@ async fn main() {
     let prompt = &args.prompt.join(" ");
     let piped = piped_input();
     let model = "llama3:latest";
-    
 
     if args.debug {
         // dbg!(ollama);
@@ -139,18 +138,33 @@ async fn main() {
     }
 }
 
+// fn config_folder() {
+
+// }
+
 #[cfg(test)]
 mod tests {
-
     use assert_cmd::Command;
+    use directories::ProjectDirs;
     use predicates::prelude::*;
 
-    use crate::Asset;
+    use crate::get_default_prompt;
+
+    #[test]
+    fn test_check_dir() {
+        if let Some(proj_dirs) = ProjectDirs::from("com", "ax-sh", "ahh") {
+            let dir = proj_dirs.config_dir();
+            eprint!("DIR----> {}", dir.display())
+            // Lin: /home/alice/.config/barapp
+            // Win: C:\Users\Alice\AppData\Roaming\Foo Corp\Bar App\config
+            // Mac: /Users/Alice/Library/Application Support/com.Foo-Corp.Bar-App
+        }
+    }
 
     #[test]
     fn test_external_prompts() {
-        let md = Asset::get("default_prompt.md").unwrap();
-        println!("66666 {:?}", std::str::from_utf8(md.data.as_ref()));
+        let default_prompt = get_default_prompt();
+        println!("{}", default_prompt)
     }
     #[test]
     fn test_default_ahh_execution() {
