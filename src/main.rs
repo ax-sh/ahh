@@ -6,8 +6,7 @@ use std::fs;
 use std::io::{self, BufRead, IsTerminal};
 
 use spinoff::{spinners, Color, Spinner};
-use std::thread::sleep;
-use std::time::Duration;
+
 
 #[derive(Debug, Subcommand)]
 enum Commands {
@@ -76,9 +75,13 @@ async fn execute_prompt(prompt: &str, piped: &str) {
     println!("{}: {}", "[PROMPT]".green(), prompt.green());
     println!("---------");
     println!("");
-    spinner.success("Done!");
+   
 
     if let Ok(res) = res {
+        spinner.stop_and_persist(
+            "✔".green().to_string().as_str(),
+            "Got some Answers!",
+        );
         println!("{}", res.response.green());
     }
 }
