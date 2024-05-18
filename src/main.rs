@@ -66,6 +66,8 @@ async fn execute_prompt(prompt: &str, piped: &str) {
     let model = "llama3:latest".to_string();
     // dbg!(ollama);
 
+    let prompt_with_instructions = [piped, prompt].join("\n");
+
     let res = ollama
         .generate(GenerationRequest::new(model, prompt.to_string()))
         .await;
@@ -73,6 +75,7 @@ async fn execute_prompt(prompt: &str, piped: &str) {
     println!("---------");
     println!("{}: {}", "[PIPED] ".green(), piped.green());
     println!("{}: {}", "[PROMPT]".green(), prompt.green());
+    println!("{}: {}", "[PROMPT With instruct]".green(), prompt_with_instructions.green());
     println!("---------");
     println!("");
    
