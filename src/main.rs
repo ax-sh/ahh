@@ -114,3 +114,31 @@ async fn main() {
         None => execute_prompt(&prompt, &piped, model).await,
     }
 }
+
+#[cfg(test)]
+mod tests {
+    use assert_cmd::Command;
+    use predicates::prelude::*;
+
+    #[test]
+    fn test_default_ahh_execution() {
+        let mut cmd = Command::cargo_bin("ahh").unwrap();
+
+        cmd.args(&["Which year did the Titanic sink?", "(Just the number)"])
+            .assert()
+            .success()
+            .stderr("")
+            .stdout(predicate::str::contains("1912"));
+    }
+
+    //   #[test]
+    //   fn test_empty_ahh_execution() {
+    //     let mut cmd = Command::cargo_bin("ahh").unwrap();
+
+    //     cmd
+    //       .args([" "])
+    //       .assert()
+    //       .success()
+    //       .stderr("")
+    //   }
+}
