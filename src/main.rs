@@ -116,6 +116,7 @@ async fn execute_prompt(prompt: &str, piped: &str, model: &str) {
             .language("md")
             .print()
             .unwrap();
+        println!()
     }
 }
 
