@@ -154,7 +154,7 @@ mod tests {
     fn test_check_dir() {
         if let Some(proj_dirs) = ProjectDirs::from("com", "ax-sh", "ahh") {
             let dir = proj_dirs.config_dir();
-            eprint!("DIR----> {}", dir.display())
+            eprint!("DIR-----> {}", dir.display())
             // Lin: /home/alice/.config/barapp
             // Win: C:\Users\Alice\AppData\Roaming\Foo Corp\Bar App\config
             // Mac: /Users/Alice/Library/Application Support/com.Foo-Corp.Bar-App

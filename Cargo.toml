@@ -30,3 +30,4 @@ predicates = "3.1.0"
 assert_cmd = "2.0.14"
 
 # cargo install --path .
+# cargo watch test
