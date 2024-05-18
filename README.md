@@ -24,6 +24,10 @@ cargo run -- --help
 cargo run -- this is a test
 echo "using piped data" | cargo run -- this is a test
 
+OR
+
+echo "using piped data" | ahh this is a test
+
 
 ```
 
