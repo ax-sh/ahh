@@ -7,9 +7,7 @@
     <cargoProject FILE="$PROJECT_DIR$/Cargo.toml" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="4d4eb4fd-868d-493c-be27-e18a0db6a5c9" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/Cargo.toml" beforeDir="false" afterPath="$PROJECT_DIR$/Cargo.toml" afterDir="false" />
-    </list>
+    <list default="true" id="4d4eb4fd-868d-493c-be27-e18a0db6a5c9" name="Changes" comment="chore: add cargo config for release run alias" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -139,11 +137,25 @@
       <workItem from="1722451947033" duration="1780000" />
       <workItem from="1722460522086" duration="86000" />
       <workItem from="1722465493646" duration="118000" />
+      <workItem from="1722466862223" duration="331000" />
     </task>
+    <task id="LOCAL-00001" summary="chore: add cargo config for release run alias">
+      <option name="closed" value="true" />
+      <created>1722467138023</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1722467138023</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="chore: add cargo config for release run alias" />
+    <option name="LAST_COMMIT_MESSAGE" value="chore: add cargo config for release run alias" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />
