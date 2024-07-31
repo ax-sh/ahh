@@ -12,6 +12,7 @@ enum Commands {
 #[command(author, version, about, long_about = None)]
 struct Cli {
     /// using stdin for positional arg value
+    #[clap(default_value = "")]
     value: MaybeStdin<String>,
     /// prompt text for ahh to use
     prompt: Vec<String>,
@@ -39,8 +40,10 @@ async fn main() {
     let args: Cli = Cli::parse();
     let model = args.model;
     let prompt = &args.prompt.join(" ");
+    let piped_value = args.value;
     log_model(model);
-    println!("value={}", args.value);
+    println!("piped_value string is null or empty: {}", piped_value.is_empty());
+    println!("piped_value={}", piped_value);
 
     if args.debug {
         // dbg!(ollama);
