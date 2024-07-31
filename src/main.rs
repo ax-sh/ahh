@@ -1,4 +1,5 @@
 use clap::{Parser, Subcommand};
+use clap_stdin::MaybeStdin;
 use colored::Colorize;
 
 #[derive(Debug, Subcommand)]
@@ -10,6 +11,8 @@ enum Commands {
 #[derive(Parser)]
 #[command(author, version, about, long_about = None)]
 struct Cli {
+    /// using stdin for positional arg value
+    value: MaybeStdin<String>,
     /// prompt text for ahh to use
     prompt: Vec<String>,
 

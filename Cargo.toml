@@ -25,6 +25,9 @@ rust-embed="8.4.0"
 # https://github.com/mehcode/config-rs
 config = "0.14.0"
 
+# for pipeing value
+clap-stdin = "0.5.1"
+
 # For testing
 predicates = "3.1.0"
 assert_cmd = "2.0.14"
