@@ -40,6 +40,7 @@ async fn main() {
     let model = args.model;
     let prompt = &args.prompt.join(" ");
     log_model(model);
+    println!("value={}", args.value);
 
     if args.debug {
         // dbg!(ollama);
