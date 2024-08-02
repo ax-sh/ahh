@@ -16,6 +16,11 @@ mod cli;
 #[folder = "src/prompts/"]
 struct Asset;
 
+fn load_prompt(prompt_file_path: &str) -> String {
+    let md = Asset::get(prompt_file_path).unwrap();
+    let default_prompt = std::str::from_utf8(md.data.as_ref()).unwrap();
+    return default_prompt.to_string();
+}
 fn list_prompts() {
     let current_dir = env::current_dir().unwrap();
 
@@ -28,15 +33,11 @@ fn list_prompts() {
 }
 
 fn get_default_prompt() -> String {
-    let md = Asset::get("default_prompt.md").unwrap();
-    let default_prompt = std::str::from_utf8(md.data.as_ref()).unwrap();
-    return default_prompt.to_string();
+    return load_prompt("default_prompt.md");
 }
 
 fn get_hustle_prompt() -> String {
-    let md = Asset::get("hustle.md").unwrap();
-    let default_prompt = std::str::from_utf8(md.data.as_ref()).unwrap();
-    return default_prompt.to_string();
+    return load_prompt("hustle.md");
 }
 
 async fn execute_prompt(prompt: &str, piped: &str, model: &str) {
