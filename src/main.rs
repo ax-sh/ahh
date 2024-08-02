@@ -35,10 +35,14 @@ fn load_prompt(prompt_file_path: &str) -> String {
     return default_prompt.to_string();
 }
 async fn list_prompts() {
-    let ollama = Ollama::default();
-    let models = ollama.list_local_models().await.unwrap();
-    for variant in models.as_slice() {
-        println!("{}", variant.name.green());
+    // let ollama = Ollama::default();
+    // let models = ollama.list_local_models().await.unwrap();
+    // for variant in models.as_slice() {
+    //     println!("{}", variant.name.green());
+    // }
+
+    for file in Asset::iter() {
+        println!("{}", file);
     }
     // list_prompts_in_project()
 }

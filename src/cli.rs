@@ -9,9 +9,13 @@ pub enum Commands {
     #[clap(alias = "ls")]
     List,
     // #[clap(alias = "fast")]
-    Fast { prompt: Vec<String> },
+    Fast {
+        prompt: Vec<String>,
+    },
     // #[clap(alias = "hustle")]
-    Hustle { prompt: Vec<String> },
+    Hustle {
+        prompt: Vec<String>,
+    },
 }
 
 #[derive(Parser, Debug)]
