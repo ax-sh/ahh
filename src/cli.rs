@@ -20,7 +20,7 @@ pub struct Cli {
     pub(crate) debug: bool,
 
     /// Change the ollama model as needed
-    #[clap(short = 'm', default_value = "llama3:latest")]
+    #[clap(short = 'm', default_value = "llama3.1:latest")]
     pub(crate) model: String,
 
     #[command(subcommand)]
