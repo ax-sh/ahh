@@ -33,6 +33,12 @@ fn get_default_prompt() -> String {
     return default_prompt.to_string();
 }
 
+fn get_hustle_prompt() -> String {
+    let md = Asset::get("hustle.md").unwrap();
+    let default_prompt = std::str::from_utf8(md.data.as_ref()).unwrap();
+    return default_prompt.to_string();
+}
+
 async fn execute_prompt(prompt: &str, piped: &str, model: &str) {
     if prompt.trim().is_empty() {
         eprintln!("{}", "No Prompt provided. Exiting".red());
@@ -105,6 +111,9 @@ async fn main() {
                 &model,
             )
             .await
+        }
+        Some(Commands::Hustle { prompt }) => {
+            execute_prompt(&prompt.join(" "), &get_hustle_prompt(), &model).await
         }
         None => execute_prompt(&prompt, &piped, &model).await,
     }
