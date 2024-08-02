@@ -81,6 +81,11 @@ async fn main() {
     let piped = cli::piped_input();
     let model = args.model;
 
+    if model.is_empty(){
+        eprintln!("model flag is empty");
+        process::exit(0);
+    }
+
     if args.debug {
         // dbg!(ollama);
         println!("---------");
