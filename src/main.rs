@@ -100,11 +100,8 @@ async fn main() {
         Some(Commands::List) => list_prompts(),
         Some(Commands::Fast { prompt }) => {
             execute_prompt(
-                &format!(
-                    "AI, I'm in a hurry. Give me a bite-sized summary on \n {}",
-                    prompt.join(" ")
-                ),
-                "",
+                &prompt.join(" "),
+                "Instructions\n AI, I'm in a hurry. Give me a bite-sized summary on\n\nInput",
                 &model,
             )
             .await
