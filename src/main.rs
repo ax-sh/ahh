@@ -3,63 +3,19 @@ use colored::Colorize;
 use ollama_rs::generation::completion::request::GenerationRequest;
 use ollama_rs::Ollama;
 use rust_embed::Embed;
-use std::io::{self, BufRead, IsTerminal};
+use std::io::{BufRead, IsTerminal};
 
 use std::{env, fs, process};
 
 use bat::PrettyPrinter;
-use spinoff::{spinners, Color, Spinner};
+use spinoff::{Color, Spinner, spinners};
+use cli::{Cli, Commands};
+
+mod cli;
 
 #[derive(Embed)]
 #[folder = "src/prompts/"]
 struct Asset;
-
-#[derive(Debug, Subcommand)]
-enum Commands {
-    /// Lists available options
-    #[clap(alias = "ls")]
-    List,
-}
-
-#[derive(Parser, Debug)]
-#[command(author, version, about, long_about = None)]
-struct Cli {
-    /// Description of the command to execute
-    prompt: Vec<String>,
-
-    /// Run the generated program with debug
-    #[clap(short = 'd', long)]
-    debug: bool,
-
-    /// Change the ollama model as needed
-    #[clap(short = 'm', default_value = "llama3:latest")]
-    model: String,
-
-    #[command(subcommand)]
-    command: Option<Commands>,
-}
-
-fn piped_input() -> String {
-    let piped = io::stdin().lock();
-    let mut prefix = String::new();
-
-    if piped.is_terminal() {
-        // eprintln!("No input provided. Please pipe text or specify a file.");
-    } else {
-        for line in piped.lines() {
-            match line {
-                Ok(line) => {
-                    prefix.push_str(&line); // Add each line to the collected_input
-                    prefix.push('\n'); // Preserve newline character
-                }
-                Err(err) => {
-                    eprintln!("Error reading line: {}", err);
-                }
-            }
-        }
-    }
-    return prefix;
-}
 
 fn list_prompts() {
     let current_dir = env::current_dir().unwrap();
@@ -82,7 +38,7 @@ async fn execute_prompt(prompt: &str, piped: &str, model: &str) {
         eprintln!("{}", "No Prompt provided. Exiting".red());
         process::exit(0);
     }
-    println!("");
+    println!();
     let mut spinner = Spinner::new(spinners::Dots, " Loading... ", Color::Yellow);
 
     let ollama = Ollama::default();
@@ -124,7 +80,7 @@ async fn execute_prompt(prompt: &str, piped: &str, model: &str) {
 async fn main() {
     let args: Cli = Cli::parse();
     let prompt = &args.prompt.join(" ");
-    let piped = piped_input();
+    let piped = cli::piped_input();
     let model = args.model;
 
     if args.debug {
@@ -134,7 +90,7 @@ async fn main() {
         println!("{}: {}", "[PROMPT]".green(), prompt.green());
 
         println!("---------");
-        println!("");
+        println!();
     }
 
     match &args.command {
@@ -143,9 +99,6 @@ async fn main() {
     }
 }
 
-// fn config_folder() {
-
-// }
 
 #[cfg(test)]
 mod tests {
