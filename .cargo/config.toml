@@ -1,3 +1,4 @@
 [alias]
 rr = "run --release"
-
+install-local = "install --path ."
+test = "watch test"

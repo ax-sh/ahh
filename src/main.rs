@@ -1,4 +1,4 @@
-use clap::{Parser};
+use clap::Parser;
 use colored::Colorize;
 use ollama_rs::generation::completion::request::GenerationRequest;
 use ollama_rs::Ollama;
