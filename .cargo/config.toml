@@ -1,4 +1,4 @@
 [alias]
-rr = "run --release"
+release = "run --release"
 install-local = "install --path ."
 test = "watch test"
