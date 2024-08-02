@@ -8,8 +8,8 @@ use std::io::{BufRead, IsTerminal};
 use std::{env, fs, process};
 
 use bat::PrettyPrinter;
-use spinoff::{Color, Spinner, spinners};
 use cli::{Cli, Commands};
+use spinoff::{spinners, Color, Spinner};
 
 mod cli;
 
@@ -98,7 +98,6 @@ async fn main() {
         None => execute_prompt(&prompt, &piped, &model).await,
     }
 }
-
 
 #[cfg(test)]
 mod tests {
