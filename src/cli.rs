@@ -30,6 +30,15 @@ pub struct Cli {
     pub(crate) command: Option<Commands>,
 }
 
+
+// pub fn piped_input() -> String {
+//     let mut prefix = String::new();
+//     io::stdin().read_to_string(&mut prefix).unwrap_or_else(|err| {
+//         eprintln!("Error reading input: {}", err);
+//     });
+//     prefix
+// }
+
 pub fn piped_input() -> String {
     let piped = io::stdin().lock();
     let mut prefix = String::new();
