@@ -1,9 +1,8 @@
-use clap::{Parser, Subcommand};
+use clap::{Parser};
 use colored::Colorize;
 use ollama_rs::generation::completion::request::GenerationRequest;
 use ollama_rs::Ollama;
 use rust_embed::Embed;
-use std::io::{BufRead, IsTerminal};
 
 use std::{env, fs, process};
 
@@ -23,6 +22,7 @@ fn list_prompts() {
     let paths = fs::read_dir(current_dir.join("./src/prompts")).unwrap();
     for path in paths {
         let file_path = path.unwrap().path();
+        // todo make prompts
         println!("Prompt File Path: {}", file_path.display())
     }
 }
