@@ -6,9 +6,9 @@ use rust_embed::Embed;
 
 use std::{env, fs, process};
 
-use bat::PrettyPrinter;
 use cli::{Cli, Commands};
 use spinoff::{spinners, Color, Spinner};
+use crate::cli::print_markdown;
 
 mod cli;
 
@@ -68,11 +68,7 @@ async fn execute_prompt(prompt: &str, piped: &str, model: &str) {
                 "Got some Answers!".green().to_string().as_str(),
             );
 
-            PrettyPrinter::new()
-                .input_from_bytes(md.as_bytes())
-                .language("md")
-                .print()
-                .unwrap();
+            print_markdown(md);
             println!()
         }
         Err(err) => {

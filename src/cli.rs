@@ -1,3 +1,4 @@
+use bat::PrettyPrinter;
 use clap::{Parser, Subcommand};
 use std::io;
 use std::io::{BufRead, IsTerminal};
@@ -47,4 +48,12 @@ pub fn piped_input() -> String {
         }
     }
     return prefix;
+}
+
+pub fn print_markdown(md: String) {
+    PrettyPrinter::new()
+        .input_from_bytes(md.as_bytes())
+        .language("md")
+        .print()
+        .unwrap();
 }
