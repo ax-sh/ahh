@@ -81,7 +81,7 @@ async fn main() {
     let piped = cli::piped_input();
     let model = args.model;
 
-    if model.is_empty(){
+    if model.is_empty() {
         eprintln!("model flag is empty");
         process::exit(0);
     }
@@ -98,6 +98,17 @@ async fn main() {
 
     match &args.command {
         Some(Commands::List) => list_prompts(),
+        Some(Commands::Fast { prompt }) => {
+            execute_prompt(
+                &format!(
+                    "AI, I'm in a hurry. Give me a bite-sized summary on \n {}",
+                    prompt.join(" ")
+                ),
+                "",
+                &model,
+            )
+            .await
+        }
         None => execute_prompt(&prompt, &piped, &model).await,
     }
 }
