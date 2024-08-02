@@ -10,6 +10,8 @@ pub enum Commands {
     List,
     #[clap(alias = "fast")]
     Fast { prompt: Vec<String> },
+    #[clap(alias = "hustle")]
+    Hustle { prompt: Vec<String> },
 }
 
 #[derive(Parser, Debug)]
@@ -29,7 +31,6 @@ pub struct Cli {
     #[command(subcommand)]
     pub(crate) command: Option<Commands>,
 }
-
 
 // pub fn piped_input() -> String {
 //     let mut prefix = String::new();
