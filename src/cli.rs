@@ -17,7 +17,7 @@ pub enum Commands {
 #[derive(Parser, Debug)]
 #[command(author, version, about, long_about = None)]
 pub struct Cli {
-    /// Description of the command to execute
+    /// consider all other args as prompt
     pub(crate) prompt: Vec<String>,
 
     /// Run the generated program with debug
