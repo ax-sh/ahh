@@ -4,13 +4,26 @@ use ollama_rs::generation::completion::request::GenerationRequest;
 use ollama_rs::Ollama;
 use rust_embed::Embed;
 
-use std::{env, fs, process};
+use std::process;
+// use std::{env, fs, process};
 
 use crate::cli::print_markdown;
 use cli::{Cli, Commands};
 use spinoff::{spinners, Color, Spinner};
 
 mod cli;
+
+// fn list_prompts_in_project() {
+// todo only works when on the project folder fix this for getting the resources from binary
+//     let current_dir = env::current_dir().unwrap();
+//
+//     let paths = fs::read_dir(current_dir.join("./src/prompts")).unwrap();
+//     for path in paths {
+//         let file_path = path.unwrap().path();
+//         // todo make prompts
+//         println!("Prompt File Path: {}", file_path.display())
+//     }
+// }
 
 #[derive(Embed)]
 #[folder = "src/prompts/"]
@@ -22,14 +35,12 @@ fn load_prompt(prompt_file_path: &str) -> String {
     return default_prompt.to_string();
 }
 async fn list_prompts() {
-    let current_dir = env::current_dir().unwrap();
-
-    let paths = fs::read_dir(current_dir.join("./src/prompts")).unwrap();
-    for path in paths {
-        let file_path = path.unwrap().path();
-        // todo make prompts
-        println!("Prompt File Path: {}", file_path.display())
+    let ollama = Ollama::default();
+    let models = ollama.list_local_models().await.unwrap();
+    for variant in models.as_slice() {
+        println!("{}", variant.name.green());
     }
+    // list_prompts_in_project()
 }
 
 fn get_default_prompt() -> String {
