@@ -21,7 +21,7 @@ fn load_prompt(prompt_file_path: &str) -> String {
     let default_prompt = std::str::from_utf8(md.data.as_ref()).unwrap();
     return default_prompt.to_string();
 }
-fn list_prompts() {
+async fn list_prompts() {
     let current_dir = env::current_dir().unwrap();
 
     let paths = fs::read_dir(current_dir.join("./src/prompts")).unwrap();
@@ -104,7 +104,7 @@ async fn main() {
     }
 
     match &args.command {
-        Some(Commands::List) => list_prompts(),
+        Some(Commands::List) => list_prompts().await,
         Some(Commands::Fast { prompt }) => {
             execute_prompt(
                 &prompt.join(" "),
