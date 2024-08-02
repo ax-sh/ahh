@@ -60,19 +60,25 @@ async fn execute_prompt(prompt: &str, piped: &str, model: &str) {
         ))
         .await;
 
-    if let Ok(res) = res {
-        let md = res.response;
-        spinner.stop_and_persist(
-            " ✔ ".green().to_string().as_str(),
-            "Got some Answers!".green().to_string().as_str(),
-        );
+    match res {
+        Ok(res) => {
+            let md = res.response;
+            spinner.stop_and_persist(
+                " ✔ ".green().to_string().as_str(),
+                "Got some Answers!".green().to_string().as_str(),
+            );
 
-        PrettyPrinter::new()
-            .input_from_bytes(md.as_bytes())
-            .language("md")
-            .print()
-            .unwrap();
-        println!()
+            PrettyPrinter::new()
+                .input_from_bytes(md.as_bytes())
+                .language("md")
+                .print()
+                .unwrap();
+            println!()
+        }
+        Err(err) => {
+            spinner.stop_and_persist("❌", "ERROR");
+            eprintln!("{}", err.to_string())
+        }
     }
 }
 
