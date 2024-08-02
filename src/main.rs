@@ -6,9 +6,9 @@ use rust_embed::Embed;
 
 use std::{env, fs, process};
 
+use crate::cli::print_markdown;
 use cli::{Cli, Commands};
 use spinoff::{spinners, Color, Spinner};
-use crate::cli::print_markdown;
 
 mod cli;
 
@@ -63,17 +63,13 @@ async fn execute_prompt(prompt: &str, piped: &str, model: &str) {
     match res {
         Ok(res) => {
             let md = res.response;
-            spinner.stop_and_persist(
-                " ✔ ".green().to_string().as_str(),
-                "Got some Answers!".green().to_string().as_str(),
-            );
+            spinner.success("Got some Answers!".green().to_string().as_str());
 
             print_markdown(md);
             println!()
         }
         Err(err) => {
-            spinner.stop_and_persist("❌", "ERROR");
-            eprintln!("{}", err.to_string())
+            spinner.fail(err.to_string().as_str());
         }
     }
 }
