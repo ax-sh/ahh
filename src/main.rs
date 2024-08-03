@@ -8,10 +8,12 @@ use std::process;
 // use std::{env, fs, process};
 
 use crate::cli::print_markdown;
+use crate::config::Config;
 use cli::{Cli, Commands};
 use spinoff::{spinners, Color, Spinner};
 
 mod cli;
+mod config;
 
 // fn list_prompts_in_project() {
 // todo only works when on the project folder fix this for getting the resources from binary
@@ -61,7 +63,7 @@ async fn execute_prompt(prompt: &str, piped: &str, model: &str) {
         process::exit(0);
     }
     println!();
-    let mut spinner = Spinner::new(spinners::Dots, " Loading... ", Color::Yellow);
+    let mut spinner = Spinner::new(spinners::Monkey, " Loading... ", Color::Yellow);
 
     let ollama = Ollama::default();
     let instructions = if piped.is_empty() {
@@ -99,6 +101,7 @@ async fn execute_prompt(prompt: &str, piped: &str, model: &str) {
 #[tokio::main]
 async fn main() {
     let args: Cli = Cli::parse();
+    let _config = Config::new();
     let prompt = &args.prompt.join(" ");
     let piped = cli::piped_input();
     let model = args.model;
