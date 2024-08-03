@@ -8,7 +8,7 @@ use std::process;
 // use std::{env, fs, process};
 
 use crate::cli::print_markdown;
-use crate::config::Config;
+// use crate::config::Config;
 use cli::{Cli, Commands};
 use spinoff::{spinners, Color, Spinner};
 
@@ -101,7 +101,7 @@ async fn execute_prompt(prompt: &str, piped: &str, model: &str) {
 #[tokio::main]
 async fn main() {
     let args: Cli = Cli::parse();
-    let _config = Config::new();
+    // let _config = Config::new();
     let prompt = &args.prompt.join(" ");
     let piped = cli::piped_input();
     let model = args.model;
