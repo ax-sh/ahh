@@ -106,12 +106,14 @@ async fn main() {
     let piped = cli::piped_input();
 
     let config = config::load_config();
+    let m = config.get("model").unwrap();
+
     println!("{:?}", config);
-    println!("{:?}", config.get_key_value("model"));
+    println!("{:?}", m);
 
     let mut model = args.model;
     if model.is_empty() {
-        model = String::from("llama3.1:latest")
+        model = String::from(if m.is_empty() { "llama3.1:latest" } else { m });
     }
 
     if model.is_empty() {
