@@ -72,8 +72,8 @@ async fn execute_prompt(prompt: &str, piped: &str, model: &str) {
         piped.to_string()
     };
     println!();
-    println!("[MODEL] {}", model);
-    println!("[[SYS PROMPT]] {}", instructions);
+    println!("[MODEL] {}", model.green());
+    println!("[[SYS PROMPT]] {}", instructions.yellow());
     println!();
 
     let prompt_with_instructions = [&instructions, prompt].join("\n");
