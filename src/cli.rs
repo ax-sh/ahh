@@ -8,11 +8,9 @@ pub enum Commands {
     /// Lists available options
     #[clap(alias = "ls")]
     List,
-    // #[clap(alias = "fast")]
     Fast {
         prompt: Vec<String>,
     },
-    // #[clap(alias = "hustle")]
     Hustle {
         prompt: Vec<String>,
     },
