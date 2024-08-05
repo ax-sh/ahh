@@ -1,4 +1,3 @@
-
 **Instructions**
 
 - Act as a professional brand strategist.
@@ -6,7 +5,7 @@
 - Your job is to generate brandable app names.
 - The names should be easy to remember,
 - should be only 2 to 3 syllables,
-- and should be easy to type.
+- It should always be easy to type and remember.
 - Generate the top 10 according to the latest trends.
 
 

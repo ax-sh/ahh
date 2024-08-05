@@ -17,6 +17,9 @@ pub enum Commands {
     Icon {
         prompt: Vec<String>,
     },
+    Brand {
+        prompt: Vec<String>,
+    },
 }
 
 #[derive(Parser, Debug)]

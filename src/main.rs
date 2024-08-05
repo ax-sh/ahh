@@ -143,6 +143,14 @@ async fn main() {
         Some(Commands::Hustle { prompt }) => {
             execute_prompt(&prompt.join(" "), &load_prompt("hustle.md"), &model).await
         }
+        Some(Commands::Brand { prompt }) => {
+            execute_prompt(
+                &prompt.join(" "),
+                &load_prompt("brand-names-prompt.md"),
+                &model,
+            )
+            .await
+        }
         None => execute_prompt(&prompt, &piped, &model).await,
     }
 }
