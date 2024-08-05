@@ -43,7 +43,7 @@ async fn list_prompts() {
     // }
 
     for file in Asset::iter() {
-        println!("{}", file);
+        println!("{}", file.bright_green().bold());
     }
     // list_prompts_in_project()
 }
