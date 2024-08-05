@@ -7,11 +7,7 @@
     <cargoProject FILE="$PROJECT_DIR$/Cargo.toml" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="4d4eb4fd-868d-493c-be27-e18a0db6a5c9" name="Changes" comment="feat(cli): add model empty logic">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/config.rs" beforeDir="false" afterPath="$PROJECT_DIR$/src/config.rs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main.rs" beforeDir="false" afterPath="$PROJECT_DIR$/src/main.rs" afterDir="false" />
-    </list>
+    <list default="true" id="4d4eb4fd-868d-493c-be27-e18a0db6a5c9" name="Changes" comment="feat: add Icon command and unicode emoji generator prompt" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -43,26 +39,26 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "Cargo.Run ahh.executor": "Run",
-    "Cargo.Test ahh_integration::test_default_ahh_execution.executor": "Run",
-    "Cargo.Test config::tests.executor": "Run",
-    "Cargo.Test config::tests::test_check_config.executor": "Run",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "RunOnceActivity.rust.reset.selective.auto.import": "true",
-    "git-widget-placeholder": "develop",
-    "last_opened_file_path": "C:/Users/USER/Desktop/CODE/RUST/ahh",
-    "node.js.detected.package.eslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "org.rust.cargo.project.model.PROJECT_DISCOVERY": "true",
-    "org.rust.cargo.project.model.impl.CargoExternalSystemProjectAware.subscribe.first.balloon": "",
-    "org.rust.disableDetachedFileInspectionC:/Users/USER/Desktop/CODE/RUST/ahh/src/config.rs": "true",
-    "org.rust.first.attach.projects": "true",
-    "settings.editor.selected.configurable": "settings.sync"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;Cargo.Run ahh.executor&quot;: &quot;Run&quot;,
+    &quot;Cargo.Test ahh_integration::test_default_ahh_execution.executor&quot;: &quot;Run&quot;,
+    &quot;Cargo.Test config::tests.executor&quot;: &quot;Run&quot;,
+    &quot;Cargo.Test config::tests::test_check_config.executor&quot;: &quot;Run&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.rust.reset.selective.auto.import&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;develop&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/USER/Desktop/CODE/RUST/ahh&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;org.rust.cargo.project.model.PROJECT_DISCOVERY&quot;: &quot;true&quot;,
+    &quot;org.rust.cargo.project.model.impl.CargoExternalSystemProjectAware.subscribe.first.balloon&quot;: &quot;&quot;,
+    &quot;org.rust.disableDetachedFileInspectionC:/Users/USER/Desktop/CODE/RUST/ahh/src/config.rs&quot;: &quot;true&quot;,
+    &quot;org.rust.first.attach.projects&quot;: &quot;true&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;settings.sync&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\Users\USER\Desktop\CODE\RUST\ahh" />
@@ -188,6 +184,7 @@
       <workItem from="1722466862223" duration="331000" />
       <workItem from="1722631207581" duration="686000" />
       <workItem from="1722643492835" duration="2399000" />
+      <workItem from="1722855781557" duration="464000" />
     </task>
     <task id="LOCAL-00001" summary="chore: add cargo config for release run alias">
       <option name="closed" value="true" />
@@ -221,7 +218,15 @@
       <option name="project" value="LOCAL" />
       <updated>1722595684727</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="feat: add Icon command and unicode emoji generator prompt">
+      <option name="closed" value="true" />
+      <created>1722856217550</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1722856217550</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -233,7 +238,8 @@
     <MESSAGE value="chore: simplify ChangeListManager configuration in workspace.xml" />
     <MESSAGE value="feat(cli): add markdown printing functionality using PrettyPrinter" />
     <MESSAGE value="feat(cli): add model empty logic" />
-    <option name="LAST_COMMIT_MESSAGE" value="feat(cli): add model empty logic" />
+    <MESSAGE value="feat: add Icon command and unicode emoji generator prompt" />
+    <option name="LAST_COMMIT_MESSAGE" value="feat: add Icon command and unicode emoji generator prompt" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

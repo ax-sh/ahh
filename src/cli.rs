@@ -16,6 +16,9 @@ pub enum Commands {
     Hustle {
         prompt: Vec<String>,
     },
+    Icon {
+        prompt: Vec<String>,
+    },
 }
 
 #[derive(Parser, Debug)]
@@ -29,7 +32,7 @@ pub struct Cli {
     pub(crate) debug: bool,
 
     /// Change the ollama model as needed
-    #[clap(short = 'm', default_value = "llama3.1:latest")]
+    #[clap(short = 'm', default_value = "")]
     pub(crate) model: String,
 
     #[command(subcommand)]

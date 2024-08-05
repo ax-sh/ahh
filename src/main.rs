@@ -63,7 +63,7 @@ async fn execute_prompt(prompt: &str, piped: &str, model: &str) {
         process::exit(0);
     }
     println!();
-    let mut spinner = Spinner::new(spinners::Monkey, " Loading... ", Color::Yellow);
+    let mut spinner = Spinner::new(spinners::Monkey, "Thinking...", Color::Yellow);
 
     let ollama = Ollama::default();
     let instructions = if piped.is_empty() {
@@ -104,7 +104,10 @@ async fn main() {
     // let _config = Config::new();
     let prompt = &args.prompt.join(" ");
     let piped = cli::piped_input();
-    let model = args.model;
+    let mut model = args.model;
+    if model.is_empty() {
+        model = String::from("llama3.1:latest")
+    }
 
     if model.is_empty() {
         eprintln!("model flag is empty");
@@ -130,6 +133,9 @@ async fn main() {
                 &model,
             )
             .await
+        }
+        Some(Commands::Icon { prompt }) => {
+            execute_prompt(&prompt.join(" "), &load_prompt("generate_icon.md"), &model).await
         }
         Some(Commands::Hustle { prompt }) => {
             execute_prompt(&prompt.join(" "), &get_hustle_prompt(), &model).await
