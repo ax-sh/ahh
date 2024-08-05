@@ -5,10 +5,9 @@ use ollama_rs::Ollama;
 use rust_embed::Embed;
 
 use std::process;
-// use std::{env, fs, process};
 
 use crate::cli::print_markdown;
-// use crate::config::Config;
+
 use cli::{Cli, Commands};
 use spinoff::{spinners, Color, Spinner};
 
@@ -59,7 +58,7 @@ fn get_hustle_prompt() -> String {
 
 async fn execute_prompt(prompt: &str, piped: &str, model: &str) {
     if prompt.trim().is_empty() {
-        eprintln!("{}", "No Prompt provided. Exiting".red());
+        eprintln!("{}", "No Prompt provided. Exiting".bright_red().bold());
         process::exit(0);
     }
     println!();
@@ -72,8 +71,8 @@ async fn execute_prompt(prompt: &str, piped: &str, model: &str) {
         piped.to_string()
     };
     println!();
-    println!("[MODEL] {}", model.green());
-    println!("[[SYS PROMPT]] \n{}", instructions.yellow());
+    println!("[MODEL] {}", model.bright_green().bold());
+    println!("[[SYS PROMPT]] \n{}", instructions.bright_yellow().bold());
     println!();
 
     let prompt_with_instructions = [&instructions, prompt].join("\n");
@@ -88,7 +87,8 @@ async fn execute_prompt(prompt: &str, piped: &str, model: &str) {
     match res {
         Ok(res) => {
             let md = res.response;
-            spinner.success("Got some Answers!".green().to_string().as_str());
+            let msg = "Got some Answers!";
+            spinner.success(msg.bright_green().bold().to_string().as_str());
 
             print_markdown(md);
         }
@@ -108,8 +108,8 @@ async fn main() {
     let config = config::load_config();
     let m = config.get("model").unwrap();
 
-    println!("{:?}", config);
-    println!("{:?}", m);
+    println!("{}", "Config: ".bright_cyan().bold());
+    println!("{:#?}", config);
 
     let mut model = args.model;
     if model.is_empty() {
