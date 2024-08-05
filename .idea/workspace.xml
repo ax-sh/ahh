@@ -7,7 +7,9 @@
     <cargoProject FILE="$PROJECT_DIR$/Cargo.toml" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="4d4eb4fd-868d-493c-be27-e18a0db6a5c9" name="Changes" comment="docs: Update emoji generator instructions to specify response format" />
+    <list default="true" id="4d4eb4fd-868d-493c-be27-e18a0db6a5c9" name="Changes" comment="feat: Update workspace configuration and improve config loading logic in main module">
+      <change beforePath="$PROJECT_DIR$/src/main.rs" beforeDir="false" afterPath="$PROJECT_DIR$/src/main.rs" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -184,7 +186,7 @@
       <workItem from="1722466862223" duration="331000" />
       <workItem from="1722631207581" duration="686000" />
       <workItem from="1722643492835" duration="2399000" />
-      <workItem from="1722855781557" duration="1236000" />
+      <workItem from="1722855781557" duration="1728000" />
     </task>
     <task id="LOCAL-00001" summary="chore: add cargo config for release run alias">
       <option name="closed" value="true" />
@@ -242,7 +244,15 @@
       <option name="project" value="LOCAL" />
       <updated>1722856448719</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="feat: Update workspace configuration and improve config loading logic in main module">
+      <option name="closed" value="true" />
+      <created>1722857140769</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1722857140769</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -256,7 +266,9 @@
     <MESSAGE value="feat(cli): add model empty logic" />
     <MESSAGE value="feat: add Icon command and unicode emoji generator prompt" />
     <MESSAGE value="docs: Update emoji generator instructions to specify response format" />
-    <option name="LAST_COMMIT_MESSAGE" value="docs: Update emoji generator instructions to specify response format" />
+    <MESSAGE value="chore: Update workspace configuration and improve config loading logic in main module" />
+    <MESSAGE value="feat: Update workspace configuration and improve config loading logic in main module" />
+    <option name="LAST_COMMIT_MESSAGE" value="feat: Update workspace configuration and improve config loading logic in main module" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

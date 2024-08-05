@@ -63,7 +63,7 @@ async fn execute_prompt(prompt: &str, piped: &str, model: &str) {
         process::exit(0);
     }
     println!();
-    let mut spinner = Spinner::new(spinners::Monkey, "Thinking...", Color::Yellow);
+    let mut spinner = Spinner::new(spinners::Monkey, "Thinking... ", Color::Yellow);
 
     let ollama = Ollama::default();
     let instructions = if piped.is_empty() {
@@ -71,8 +71,9 @@ async fn execute_prompt(prompt: &str, piped: &str, model: &str) {
     } else {
         piped.to_string()
     };
-
-    println!("[[inst]] {}", instructions);
+    println!();
+    println!("[MODEL] {}", model);
+    println!("[[SYS PROMPT]] {}", instructions);
     println!();
 
     let prompt_with_instructions = [&instructions, prompt].join("\n");
