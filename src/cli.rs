@@ -70,9 +70,11 @@ pub fn piped_input() -> String {
 }
 
 pub fn print_markdown(md: String) {
+    println!();
     PrettyPrinter::new()
         .input_from_bytes(md.as_bytes())
         .language("md")
         .print()
         .unwrap();
+    println!()
 }

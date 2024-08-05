@@ -73,7 +73,7 @@ async fn execute_prompt(prompt: &str, piped: &str, model: &str) {
     };
     println!();
     println!("[MODEL] {}", model.green());
-    println!("[[SYS PROMPT]] {}", instructions.yellow());
+    println!("[[SYS PROMPT]] \n{}", instructions.yellow());
     println!();
 
     let prompt_with_instructions = [&instructions, prompt].join("\n");
@@ -91,7 +91,6 @@ async fn execute_prompt(prompt: &str, piped: &str, model: &str) {
             spinner.success("Got some Answers!".green().to_string().as_str());
 
             print_markdown(md);
-            println!()
         }
         Err(err) => {
             spinner.fail(err.to_string().as_str());
