@@ -15,7 +15,7 @@ mod cli;
 mod config;
 
 // fn list_prompts_in_project() {
-// todo only works when on the project folder fix this for getting the resources from binary
+// todo change it to be dynamically loaded
 //     let current_dir = env::current_dir().unwrap();
 //
 //     let paths = fs::read_dir(current_dir.join("./src/prompts")).unwrap();
