@@ -7,9 +7,7 @@
     <cargoProject FILE="$PROJECT_DIR$/Cargo.toml" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="4d4eb4fd-868d-493c-be27-e18a0db6a5c9" name="Changes" comment="feat: Update workspace configuration and improve config loading logic in main module">
-      <change beforePath="$PROJECT_DIR$/src/main.rs" beforeDir="false" afterPath="$PROJECT_DIR$/src/main.rs" afterDir="false" />
-    </list>
+    <list default="true" id="4d4eb4fd-868d-493c-be27-e18a0db6a5c9" name="Changes" comment="style: enhance console output formatting in execute_prompt and main functions" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -252,7 +250,31 @@
       <option name="project" value="LOCAL" />
       <updated>1722857140769</updated>
     </task>
-    <option name="localTasksCounter" value="9" />
+    <task id="LOCAL-00009" summary="style: enhance console output formatting in execute_prompt and main functions">
+      <option name="closed" value="true" />
+      <created>1722896739456</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1722896739456</updated>
+    </task>
+    <task id="LOCAL-00010" summary="style: enhance console output formatting in execute_prompt and main functions">
+      <option name="closed" value="true" />
+      <created>1722896748207</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1722896748207</updated>
+    </task>
+    <task id="LOCAL-00011" summary="style: enhance console output formatting in execute_prompt and main functions">
+      <option name="closed" value="true" />
+      <created>1722896825001</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1722896825001</updated>
+    </task>
+    <option name="localTasksCounter" value="12" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -268,7 +290,8 @@
     <MESSAGE value="docs: Update emoji generator instructions to specify response format" />
     <MESSAGE value="chore: Update workspace configuration and improve config loading logic in main module" />
     <MESSAGE value="feat: Update workspace configuration and improve config loading logic in main module" />
-    <option name="LAST_COMMIT_MESSAGE" value="feat: Update workspace configuration and improve config loading logic in main module" />
+    <MESSAGE value="style: enhance console output formatting in execute_prompt and main functions" />
+    <option name="LAST_COMMIT_MESSAGE" value="style: enhance console output formatting in execute_prompt and main functions" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

@@ -43,17 +43,13 @@ async fn list_prompts() {
     // }
 
     for file in Asset::iter() {
-        println!("{}", file);
+        println!("{}", file.bright_green().bold());
     }
     // list_prompts_in_project()
 }
 
 fn get_default_prompt() -> String {
     return load_prompt("default_prompt.md");
-}
-
-fn get_hustle_prompt() -> String {
-    return load_prompt("hustle.md");
 }
 
 async fn execute_prompt(prompt: &str, piped: &str, model: &str) {
@@ -101,7 +97,7 @@ async fn execute_prompt(prompt: &str, piped: &str, model: &str) {
 #[tokio::main]
 async fn main() {
     let args: Cli = Cli::parse();
-    // let _config = Config::new();
+
     let prompt = &args.prompt.join(" ");
     let piped = cli::piped_input();
 
@@ -145,7 +141,7 @@ async fn main() {
             execute_prompt(&prompt.join(" "), &load_prompt("generate_icon.md"), &model).await
         }
         Some(Commands::Hustle { prompt }) => {
-            execute_prompt(&prompt.join(" "), &get_hustle_prompt(), &model).await
+            execute_prompt(&prompt.join(" "), &load_prompt("hustle.md"), &model).await
         }
         None => execute_prompt(&prompt, &piped, &model).await,
     }
