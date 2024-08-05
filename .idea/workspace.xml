@@ -7,7 +7,7 @@
     <cargoProject FILE="$PROJECT_DIR$/Cargo.toml" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="4d4eb4fd-868d-493c-be27-e18a0db6a5c9" name="Changes" comment="feat: add Icon command and unicode emoji generator prompt" />
+    <list default="true" id="4d4eb4fd-868d-493c-be27-e18a0db6a5c9" name="Changes" comment="docs: Update emoji generator instructions to specify response format" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -184,7 +184,7 @@
       <workItem from="1722466862223" duration="331000" />
       <workItem from="1722631207581" duration="686000" />
       <workItem from="1722643492835" duration="2399000" />
-      <workItem from="1722855781557" duration="464000" />
+      <workItem from="1722855781557" duration="1236000" />
     </task>
     <task id="LOCAL-00001" summary="chore: add cargo config for release run alias">
       <option name="closed" value="true" />
@@ -226,7 +226,23 @@
       <option name="project" value="LOCAL" />
       <updated>1722856217550</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="feat: add Icon command and unicode emoji generator prompt">
+      <option name="closed" value="true" />
+      <created>1722856295037</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1722856295037</updated>
+    </task>
+    <task id="LOCAL-00007" summary="docs: Update emoji generator instructions to specify response format">
+      <option name="closed" value="true" />
+      <created>1722856448719</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1722856448719</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -239,7 +255,8 @@
     <MESSAGE value="feat(cli): add markdown printing functionality using PrettyPrinter" />
     <MESSAGE value="feat(cli): add model empty logic" />
     <MESSAGE value="feat: add Icon command and unicode emoji generator prompt" />
-    <option name="LAST_COMMIT_MESSAGE" value="feat: add Icon command and unicode emoji generator prompt" />
+    <MESSAGE value="docs: Update emoji generator instructions to specify response format" />
+    <option name="LAST_COMMIT_MESSAGE" value="docs: Update emoji generator instructions to specify response format" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

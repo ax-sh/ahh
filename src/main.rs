@@ -104,6 +104,11 @@ async fn main() {
     // let _config = Config::new();
     let prompt = &args.prompt.join(" ");
     let piped = cli::piped_input();
+
+    let config = config::load_config();
+    println!("{:?}", config);
+    println!("{:?}", config.get_key_value("model"));
+
     let mut model = args.model;
     if model.is_empty() {
         model = String::from("llama3.1:latest")
